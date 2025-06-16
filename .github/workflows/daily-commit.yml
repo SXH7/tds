@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # Allow manual triggers
 
 jobs:
-  scrape-imdb:
+  daily-commit:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -15,13 +15,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
-
-      - name: Run scraper
-        run: | # python
-          uv run --with httpx,lxml,cssselect python scrape.py
 
       - name: Commit by 22f3002772@ds.study.iitm.ac.in
         run: |
