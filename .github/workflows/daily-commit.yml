@@ -18,9 +18,15 @@ jobs:
 
       - name: Commit by 22f3002772@ds.study.iitm.ac.in
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add *.json
-          git commit -m "Update IMDb Top 250 data [skip ci]" || exit 0
+          git config --global user.email "22f3002772@ds.study.iitm.ac.in"
+          git config --global user.name "Auto Commit Bot"
+      
+          git checkout main  # or your default branch
+      
+          echo "Daily update: $(date)" >> daily-log.txt
+          git add daily-log.txt
+          git commit -m "Daily commit from GitHub Actions - $(date)" || exit 0
+      
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git push
+          git push origin main  # or your default branch
+
