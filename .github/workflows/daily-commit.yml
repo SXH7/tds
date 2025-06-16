@@ -21,3 +21,5 @@ jobs:
         git add daily-log.txt
         git commit -m "Daily commit from GitHub Actions - $(date)"
         git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
